@@ -6,14 +6,15 @@ import System.Environment
 main :: IO ()
 main = do
   n <- getArgs
-  let option1 = read $ n !! 0
-      option2 = case n !! 1 of
+  let option1 = n !! 0
+      option2 = read $ n !! 1
+      option3 = case n !! 2 of
                   "forever" -> Nothing
-                  _ -> read $ n !! 1
-      option3 = if length n == 2
+                  _ -> Just $ read $ n !! 2
+      option4 = if length n == 3
                    then False
-                   else case n !! 2 of
+                   else case n !! 3 of
                           "numbers" -> True
                           _ -> False
-  crawl "Online_chat" option1 option2 option3
+  crawl option1 option2 option3 option4
 
